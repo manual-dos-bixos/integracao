@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Spline+Sans:wght@300..700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: "Roboto", serif;
+        }
+        body {
+            margin: 0;
+            background-color: #303030;
+        }
+        #main {
+            min-height: 100vh;
+        }
+        .header {
+            background-color: #9879a3;
+            background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+        }
+        .header h1 {
+            font-size: 2.6em;
+        }
+        .logo img {
+            max-width: 40%;
+        }
+        #logo-atletica {
+            border: 3px solid white;
+            border-radius: 50%;
+        }
+        #logo-fatec {
+            display: block;
+            margin: auto 0;
+            border-radius: 50%;
+            width: 100%;
+            overflow: visible;
+        }
+        .fun-font {
+            font-family: "Barriecito", serif;
+        }
+        
+        svg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            color: #444444;
+            color: #5c5c5c;
+            color: #242424;
+            color: #1a1a1a;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .out-top {
+            animation: rotate 20s linear infinite;
+            transform-origin: 13px 25px;
+        }
+        .in-top {
+            animation: rotate 10s linear infinite;
+            transform-origin: 13px 25px;
+        }
+        .out-bottom {
+            animation: rotate 25s linear infinite;
+            transform-origin: 84px 93px;
+        }
+        .in-bottom {
+            animation: rotate 15s linear infinite;
+            transform-origin: 84px 93px;
+        }
+
+        :root{
+            --st: #8e10a7;
+            --nd: #7d1492;
+            --rd: #5c1c69;
+        }
+        .btn {
+            border-radius: 2em !important;
+            transition: background-color 0s;
+        }
+        .bg-primary, .btn-primary{
+            background-color: var(--st) !important;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: var(--nd) !important;
+        }
+        .btn-primary:active {
+            background-color: var(--rd) !important;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <svg preserveAspectRatio="xMidYMid slice" viewBox="10 10 80 80">
+        <path fill="#444444" class="out-top" d="M37-5C25.1-14.7,5.7-19.1-9.2-10-28.5,1.8-32.7,31.1-19.8,49c15.5,21.5,52.6,22,67.2,2.3C59.4,35,53.7,8.5,37-5Z"/>
+        <path fill="#5c5c5c" class="in-top" d="M20.6,4.1C11.6,1.5-1.9,2.5-8,11.2-16.3,23.1-8.2,45.6,7.4,50S42.1,38.9,41,24.5C40.2,14.1,29.4,6.6,20.6,4.1Z"/>
+        <path fill="#242424" class="out-bottom" d="M105.9,48.6c-12.4-8.2-29.3-4.8-39.4.8-23.4,12.8-37.7,51.9-19.1,74.1s63.9,15.3,76-5.6c7.6-13.3,1.8-31.1-2.3-43.8C117.6,63.3,114.7,54.3,105.9,48.6Z"/>
+        <path fill="#1a1a1a" class="in-bottom" d="M102,67.1c-9.6-6.1-22-3.1-29.5,2-15.4,10.7-19.6,37.5-7.6,47.8s35.9,3.9,44.5-12.5C115.5,92.6,113.9,74.6,102,67.1Z"/>
+    </svg>
+
+    <section class="px-3 py-4" id="main">
+        <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+            <div class="col-12 col-md-10 col-lg-8 card bg-dark text-light p-3 rounded-5 m-auto">
+                <div class="header rounded-4 p-3 mb-5">
+                    <h1 class="fun-font text-center m-auto">
+                        Integração <br class="d-md-none"><span class="fun-font fs-5 mb-3">dos</span> Bixos
+                    </h1>
+                    <p class="text-center m-0">Fatec Campinas | 2025-1</p>
+                </div>
+                <h3 class="px-3">Olá, que bom te ver por aqui!</h3>
+                <hr>
+                <div class="text-center">
+                    <p class="m-1">Eu sou...</p>
+                    <button class="btn btn-primary px-4 m-1 mt-0 btn-selecionar-aluno" id="btn-calouro">Calouro</button>
+                    <button class="btn btn-primary px-4 m-1 mt-0 btn-selecionar-aluno" id="btn-veterano">Veterano</button>
+                </div>
+                <div style="overflow: hidden;" id="form-email">
+                    <hr>
+                    <div class="form-group col-12 col-md-8 m-auto">
+                        <label class="m-1">Para acessar o manual, insira seu email.</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="example.email@gmail.com">
+                        <p class="text-secondary m-1">Se você já preencheu o formulário de adoção, utilize o mesmo endereço de e-mail.</p>
+                    </div>
+                    <div class="text-center m-3">
+                        <button type="button" class="btn px-4 btn-primary" id="btn-enviar">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="p-3 py-5 hidden" id="vet">
+        <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+            <h1>vet</h1>
+        </div>
+    </section>
+
+    <div class="justify-content-center gap-3 hidden">
+        <span class="col-5 col-md-4 bg-light p-3 d-flex align-items-center rounded-circle">
+            <img src="assets/img/fatec_ra_campinas_campinas_cor.png" alt="Logo da Fatec Campinas" id="logo-fatec">
+        </span>
+        <img src="assets/img/logo-atletica.jpg" alt="Logo da Atlética Guará" class="col-5 col-md-4" id="logo-atletica">
+    </div>
+
+    <script src="scripts/scripts.js"></script>
+</body>
+</html>

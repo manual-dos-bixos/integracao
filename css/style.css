@@ -1,0 +1,12 @@
+:root{
+    --st: #8e10a7;
+    --nd: #5f1d7c;
+    --rd: #5f1d7c;
+}
+
+.bg-primary, .btn-primary{
+    background-color: var(--st) !important;
+}
+.bg-secondary, .btn-secondary{
+    background-color: var(--nd) !important;
+}
