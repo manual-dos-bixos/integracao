@@ -1,4 +1,19 @@
 $(document).ready(function() {
+    $('html, body').animate({
+        scrollTop: 0
+    }, 300);
+});
+
+$(document).on('click', '#scroll-to-main', function() {
+    $('html, body').animate({
+        scrollTop: $('#main').offset().top
+    }, 300);
+
+    setTimeout(function() {
+        $('#index').hide();
+    }, 600);
+
+    $('body').css({'overflow': 'scroll'});
 });
 
 $(document).on('click', '#manual-btn', function() {
@@ -20,7 +35,7 @@ $(document).on('click', '#btn-acessar-manual', function() {
     hasFilledForm($('#email').val());
 });
 
-$(document).on('click', '.voltar-index', function() {
+$(document).on('click', '.link-index', function() {
     $("#main").fadeIn(200);
     $("#acesso-manual").fadeOut(200);
     $("#projeto-adocao").fadeOut(200);
@@ -44,8 +59,10 @@ $(document).on('click', '#btn-veterano-inscricao', function() {
     }, 200);
 });
 
-$(document).on('click', '.voltar-adocao', function() {
-    console.log(1);
+$(document).on('click', '.link-adocao', function() {
+    $('#modal-email-sem-cadastro').modal('hide');
+    $("#acesso-manual").fadeOut(200);
+    
     $("#form-calouros").fadeOut(200);
     $("#form-veteranos").fadeOut(200);
     
@@ -92,7 +109,7 @@ function hasFilledForm(email) {
                 if (calouro.email == email) found = true;
             });
 
-            if (found) console.log(1);
+            if (found) window.location.href = 'manual-dos-bixos.html';
             else $('#modal-email-sem-cadastro').modal('show');
         })
         .catch(error => function() {
