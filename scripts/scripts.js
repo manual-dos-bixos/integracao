@@ -1,17 +1,19 @@
-$(document).ready(function() {
-    $('html, body').animate({
-        scrollTop: 0
-    }, 0);
-});
+// $(document).ready(function() {
+//     $('html, body').animate({
+//         scrollTop: 0
+//     }, 0);
+// });
 
 $(document).on('click', '#scroll-to-main', function() {
-    $('html, body').animate({
-        scrollTop: $(window).height()
-    }, 600, function() {
-        $('#index').hide();
-    
-        $('body').css({'overflow': 'scroll'});
+    window.scrollTo({
+        top: window.innerHeight, 
+        behavior: 'smooth'
     });
+    $('body').css({'overflow': 'scroll'});
+
+    setTimeout(() => {
+        $('#index').hide()
+    }, 600);
 });
 
 $(document).on('click', '#manual-btn', function() {

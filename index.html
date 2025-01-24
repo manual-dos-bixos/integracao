@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Integração dos bixos - Fatec Campinas</title>
     <link rel="shortcut icon" href="assets/favicon/favicon 16x16.png"/>
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="assets/favicon/favicon 16x16.png" sizes="16x16">
+    <link rel="icon" href="assets/favicon/favicon 32x32.png" sizes="32x32">
+    <link rel="icon" href="assets/favicon/favicon 48x48.png" sizes="48x48">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,186 +16,187 @@
     <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Spline+Sans:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-* {
-    font-family: "Roboto", serif;
-}
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-::-webkit-scrollbar-thumb {
-    background-color: rgb(91, 91, 91);
-    border-radius: 20px;
-}
-body {
-    margin: 0;
-    overflow: hidden;
-    background-color: #303030;
-}
+        * {
+            font-family: "Roboto", serif;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: rgb(91, 91, 91);
+            border-radius: 20px;
+        }
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #303030;
+        }
 
-#index {
-    height: 100vh;
-}
-.aba-bg {
-    overflow: hidden;
-    position: absolute;
-    border-radius: 0 0 50em 50em;
-    filter: drop-shadow(0 0 35px rgb(21, 20, 28));
-}
-.aba-bg div {
-    width: 70vw;
-    height: 65vh;
-    max-width: 400px;
-    background-image: url('assets/img/logo-atletica-fundo-preto-cortado.jpg');
-    background-size: cover;
-    filter: blur(5px) brightness(40%) grayscale(50%);
-}
+        #index {
+            height: 100vh;
+        }
+        .aba-bg {
+            overflow: hidden;
+            position: absolute;
+            border-radius: 0 0 50em 50em;
+            filter: drop-shadow(0 0 35px rgb(21, 20, 28));
+        }
+        .aba-bg div {
+            width: 70vw;
+            height: 65vh;
+            max-width: 400px;
+            background-image: url('assets/img/logo-atletica-fundo-preto-cortado.jpg');
+            background-size: cover;
+            filter: blur(5px) brightness(40%) grayscale(50%);
+        }
 
-#main {
-    min-height: 100vh;
-}
-.header {
-    background-color: #9879a3;
-    background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
-}
-.header h1 {
-    font-size: 2.6em;
-}
-.logo img {
-    max-width: 40%;
-}
-#logo-atletica {
-    border: 3px solid white;
-    border-radius: 50%;
-}
-#logo-fatec {
-    display: block;
-    margin: auto 0;
-    border-radius: 50%;
-    width: 100%;
-    overflow: visible;
-}
-.fun-font {
-    font-family: "Barriecito", serif;
-}
+        #main {
+            min-height: 100vh;
+        }
+        .header {
+            background-color: var(--bg-light);
+            background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+        }
+        .header h1 {
+            font-size: 2.6em;
+        }
+        .logo img {
+            max-width: 40%;
+        }
+        #logo-atletica {
+            border: 3px solid white;
+            border-radius: 50%;
+        }
+        #logo-fatec {
+            display: block;
+            margin: auto 0;
+            border-radius: 50%;
+            width: 100%;
+            overflow: visible;
+        }
+        .fun-font {
+            font-family: "Barriecito", serif;
+        }
 
-svg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: -1050;
-}
+        svg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1050;
+        }
 
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-.out-top {
-    animation: rotate 20s linear infinite;
-    transform-origin: 13px 25px;
-}
-.in-top {
-    animation: rotate 10s linear infinite;
-    transform-origin: 13px 25px;
-}
-.out-bottom {
-    animation: rotate 25s linear infinite;
-    transform-origin: 84px 93px;
-}
-.in-bottom {
-    animation: rotate 15s linear infinite;
-    transform-origin: 84px 93px;
-}
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .out-top {
+            animation: rotate 20s linear infinite;
+            transform-origin: 13px 25px;
+        }
+        .in-top {
+            animation: rotate 10s linear infinite;
+            transform-origin: 13px 25px;
+        }
+        .out-bottom {
+            animation: rotate 25s linear infinite;
+            transform-origin: 84px 93px;
+        }
+        .in-bottom {
+            animation: rotate 15s linear infinite;
+            transform-origin: 84px 93px;
+        }
 
-:root{
-    --st: #8e10a7;
-    --nd: #7d1492;
-    --rd: #5c1c69;
-}
-.btn {
-    border-radius: 2em;
-    transition: background-color 0s;
-}
-.bg-primary, .btn-primary{
-    background-color: var(--st) !important;
-    border: none;
-}
-.btn-primary:hover {
-    background-color: var(--nd) !important;
-}
-.btn-primary:active {
-    background-color: var(--rd) !important;
-}
+        :root{
+            --st: #8719C4;
+            --nd: #641290;
+            --rd: #4d116d;
+            --bg-light: #b75ae9;
+        }
+        .btn {
+            border-radius: 2em;
+            transition: background-color 0s;
+        }
+        .bg-primary, .btn-primary{
+            background-color: var(--st) !important;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: var(--nd) !important;
+        }
+        .btn-primary:active {
+            background-color: var(--rd) !important;
+        }
 
-.hidden {
-    display: none;
-}
+        .hidden {
+            display: none;
+        }
 
-.form-section {
-    height: 100vh;
-}
-.embedded-form {
-    background-color: #9879a3;
-    height: calc(100% - 5em);
-    overflow-x: hidden;
-    width: 100%;
-}
-.embedded-form iframe {
-    width: 100%;
-    height: 100%;
-}
+        .form-section {
+            height: 100vh;
+        }
+        .embedded-form {
+            background-color: var(--bg-light);
+            height: calc(100% - 5em);
+            overflow-x: hidden;
+            width: 100%;
+        }
+        .embedded-form iframe {
+            width: 100%;
+            height: 100%;
+        }
 
-.btn-tipo-aluno {
-    transition: box-shadow .1s ease-in-out;
-}
-.selected-btn {
-    -webkit-box-shadow: 0px 0px 16px 0px rgba(255,255,255,1);
-    -moz-box-shadow: 0px 0px 16px 0px rgba(255,255,255,1);
-    box-shadow: 0px 0px 16px 0px rgba(255,255,255,1);
-    background-color: var(--nd) !important;
-}
+        .btn-tipo-aluno {
+            transition: box-shadow .1s ease-in-out;
+        }
+        .selected-btn {
+            -webkit-box-shadow: 0px 0px 16px 0px rgba(255,255,255,1);
+            -moz-box-shadow: 0px 0px 16px 0px rgba(255,255,255,1);
+            box-shadow: 0px 0px 16px 0px rgba(255,255,255,1);
+            background-color: var(--nd) !important;
+        }
 
-#btn-acessar-manual {
-    height: 2.5em;
-    padding: 0 2em;
-    border-width: 1px;
-    text-align: center;
-    border-radius: 40px;
-    background: #8a13ab;
-    border: 2px solid #8a13ab;
-    color: #fff;
-    transition: all 0.1s ease;
-}
-#btn-acessar-manual:hover {
-    color: white;
-    background: #710f8c;
-}
-.loading-btn {
-    width: 2.5em;
-    height: 2.5em;
-    padding: 0 !important;
-    border-color: #bbbbbb !important;
-    border-left-color: #1ECD97 !important;
-    border-width: 3px !important;
-    background-color: transparent !important;
-    animation: rotating 2s 0.1s linear infinite;
-}
-@keyframes rotating {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
+        #btn-acessar-manual {
+            height: 2.5em;
+            padding: 0 2em;
+            border-width: 1px;
+            text-align: center;
+            border-radius: 40px;
+            background: var(--st);
+            border: 2px solid var(--nd);
+            color: #fff;
+            transition: all 0.1s ease;
+        }
+        #btn-acessar-manual:hover {
+            color: white;
+            background: var(--nd);
+        }
+        .loading-btn {
+            width: 2.5em;
+            height: 2.5em;
+            padding: 0 !important;
+            border-color: #bbbbbb !important;
+            border-left-color: #1ecd64 !important;
+            border-width: 3px !important;
+            background-color: transparent !important;
+            animation: rotating 2s 0.1s linear infinite;
+        }
+        @keyframes rotating {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -252,7 +254,7 @@ svg {
                 <h1 class="fun-font text-center my-3">Manual dos bixos</h1>
                 <p>Conteúdo preparado por veteranos com tudo que um calouro precisa saber.</p>
                 <p>Para acessar o manual, é necessário já ter feito o cadastro de pedido de adoção.</p>
-                <p>Use o mesmo e-mail cadastrado para acessar o Manual ou <a href="" style="color: #c21bff;">faça aqui sua inscrição.</a></p>
+                <p>Use o mesmo e-mail cadastrado para acessar o Manual ou <a href="" style="color: var(--bg-light);">faça aqui sua inscrição.</a></p>
                 
                 <div class="text-center">
                     <h4 class="m-2">Eu sou...</h4>
@@ -364,6 +366,8 @@ svg {
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="scripts/scripts.js"></script>
 </body>
 </html>
