@@ -1,19 +1,17 @@
 $(document).ready(function() {
     $('html, body').animate({
         scrollTop: 0
-    }, 300);
+    }, 0);
 });
 
 $(document).on('click', '#scroll-to-main', function() {
     $('html, body').animate({
         scrollTop: $(window).height()
-    }, 600);
-
-    setTimeout(function() {
+    }, 600, function() {
         $('#index').hide();
     
         $('body').css({'overflow': 'scroll'});
-    }, 1000);
+    });
 });
 
 $(document).on('click', '#manual-btn', function() {
