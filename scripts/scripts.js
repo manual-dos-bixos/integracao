@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 $(document).on('click', '#scroll-to-main', function() {
     $('html, body').animate({
-        scrollTop: $('#main').offset().top
+        scrollTop: $(window).height();
     }, 600);
 
     setTimeout(function() {
