@@ -7,13 +7,13 @@ $(document).ready(function() {
 $(document).on('click', '#scroll-to-main', function() {
     $('html, body').animate({
         scrollTop: $('#main').offset().top
-    }, 300);
+    }, 600);
 
     setTimeout(function() {
         $('#index').hide();
-    }, 600);
-
-    $('body').css({'overflow': 'scroll'});
+    
+        $('body').css({'overflow': 'scroll'});
+    }, 1000);
 });
 
 $(document).on('click', '#manual-btn', function() {
