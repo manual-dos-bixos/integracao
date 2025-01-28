@@ -14,7 +14,7 @@ $(document).on('click', '#scroll-to-main', function() {
 
 window.addEventListener('scroll', function() {
     if (window.scrollY >= window.innerHeight) {
-        $('#index').slideUp()
+        $('#index').hide()
         $('body').css({'overflow': 'scroll'});
     }
 });
