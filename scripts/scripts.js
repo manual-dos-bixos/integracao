@@ -5,6 +5,7 @@ $(document).ready(function() {
 }
 
 $(document).on('click', '#scroll-to-main', function() {
+    $('body').css({'overflow': 'scroll'});
     window.scrollTo({
         top: window.innerHeight, 
         behavior: 'smooth'
