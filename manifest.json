@@ -3,7 +3,7 @@
     "short_name": "Bixos Fatec",
     "description": "Recepção e manual para integração dos calouros da Fatec Campinas.",
     "start_url": "/",
-    "display": "standalone", 
+    "display": "fullscreen", 
     "background_color": "#000",
     "theme_color": "#8719C4",
     "icons": [
