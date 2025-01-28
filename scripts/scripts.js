@@ -1,19 +1,14 @@
-// $(document).ready(function() {
-//     $('html, body').animate({
-//         scrollTop: 0
-//     }, 0);
-// });
-
 $(document).on('click', '#scroll-to-main', function() {
     window.scrollTo({
         top: window.innerHeight, 
         behavior: 'smooth'
     });
     $('body').css({'overflow': 'scroll'});
+});
 
-    setTimeout(() => {
-        $('#index').hide()
-    }, 600);
+window.addEventListener('scroll', function() {
+    if (window.scrollY >= window.innerHeight)
+        $('#index').slideUp()
 });
 
 $(document).on('click', '#manual-btn', function() {
