@@ -7,7 +7,7 @@ $(document).ready(function() {
 $(document).on('click', '#scroll-to-main', function() {
     $('body').css({'overflow': 'scroll'});
     window.scrollTo({
-        top: $('#main').offset().top, 
+        top: window.innerHeight, 
         behavior: 'smooth'
     });
 });
