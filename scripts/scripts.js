@@ -3,7 +3,6 @@ $(document).on('click', '#scroll-to-main', function() {
         top: window.innerHeight, 
         behavior: 'smooth'
     });
-    $('body').css({'overflow': 'scroll'});
 });
 
 window.addEventListener('scroll', function() {
