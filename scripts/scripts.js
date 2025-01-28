@@ -19,7 +19,9 @@ window.addEventListener('scroll', function() {
     }
 });
 
-$(document).on('click', '#manual-btn', function() {
+$(document).on('click', '#manual-btn, #link-inscricao', function(e) {
+    e.preventDefault();
+
     $("#main").fadeOut(200);
     $("#acesso-manual").fadeIn(200);
 });
