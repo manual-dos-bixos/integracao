@@ -1,3 +1,9 @@
+$(document).ready(function() {
+    if (window.scrollY >= window.innerHeight) {
+        $('body').css({'overflow': 'scroll'});
+    }
+}
+
 $(document).on('click', '#scroll-to-main', function() {
     window.scrollTo({
         top: window.innerHeight, 
@@ -6,8 +12,10 @@ $(document).on('click', '#scroll-to-main', function() {
 });
 
 window.addEventListener('scroll', function() {
-    if (window.scrollY >= window.innerHeight)
+    if (window.scrollY >= window.innerHeight) {
         $('#index').slideUp()
+        $('body').css({'overflow': 'scroll'});
+    }
 });
 
 $(document).on('click', '#manual-btn', function() {
