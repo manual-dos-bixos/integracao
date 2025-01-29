@@ -1,9 +1,3 @@
-// $(document).ready(function() {
-//     $('html, body').animate({
-//         scrollTop: 0
-//     }, 0);
-// });
-
 $(document).on('click', '#scroll-to-main', function() {
     window.scrollTo({
         top: window.innerHeight, 
