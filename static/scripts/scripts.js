@@ -1,16 +1,27 @@
-$(document).on('click', '#scroll-to-main', function() {
-    window.scrollTo({
-        top: window.innerHeight, 
-        behavior: 'smooth'
-    });
-    $('body').css({'overflow': 'scroll'});
-
-    setTimeout(() => {
-        $('#index').hide()
-    }, 600);
+$(document).ready(function() {
+    if (window.scrollY >= window.innerHeight) {
+        $('body').css({'overflow': 'scroll'});
+    }
 });
 
-$(document).on('click', '#manual-btn', function() {
+$(document).on('click', '#scroll-to-main', function() {
+    $('body').css({'overflow': 'scroll'});
+    window.scrollTo({
+        top: window.innerHeight + (window.outerHeight - window.innerHeight),
+        behavior: 'smooth'
+    });
+});
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY >= window.innerHeight) {
+        $('#index').hide()
+        $('body').css({'overflow': 'scroll'});
+    }
+});
+
+$(document).on('click', '#manual-btn, #link-inscricao', function(e) {
+    e.preventDefault();
+
     $("#main").fadeOut(200);
     $("#acesso-manual").fadeIn(200);
 });
