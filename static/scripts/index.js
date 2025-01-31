@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $('body').css('overflow', 'hidden');
     $('#index').show();
 });
 
@@ -42,24 +43,6 @@ $(document).on('click', '.link-index', function() {
     $("#main").fadeIn(200);
     $("#acesso-manual").fadeOut(200);
     $("#projeto-adocao").fadeOut(200);
-});
-
-$(document).on('click', '#btn-calouro-inscricao', function() {
-    $("svg").fadeOut(200);
-    $("#projeto-adocao").fadeOut(200);
-    
-    setTimeout(function() {
-        $("#form-calouros").fadeIn(200);
-    }, 200);
-});
-
-$(document).on('click', '#btn-veterano-inscricao', function() {
-    $("svg").fadeOut(200);
-    $("#projeto-adocao").fadeOut(200);
-    
-    setTimeout(function() {
-        $("#form-veteranos").fadeIn(200);
-    }, 200);
 });
 
 $(document).on('click', '.link-adocao', function() {

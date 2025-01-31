@@ -11,7 +11,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/form', methods=['GET', 'POST'])
-def cadastro():
+def form():
     form = FormularioCadastro()
     if form.validate_on_submit():
         # Aqui você pode processar os dados do formulário

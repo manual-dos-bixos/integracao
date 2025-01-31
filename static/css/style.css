@@ -1,3 +1,11 @@
+:root{
+    --st: #8719C4;
+    --nd: #641290;
+    --rd: #4d116d;
+    --bg-light: #b75ae9;
+    --bs-body-font-size: 14px;
+}
+
 * {
     font-family: "Roboto", serif;
 }
@@ -13,8 +21,10 @@
 }
 body {
     margin: 0;
-    /* overflow: hidden; */
     background-color: #303030;
+}
+p {
+    font-weight: 300 !important;
 }
 
 #index {
@@ -97,12 +107,6 @@ svg {
     transform-origin: 84px 93px;
 }
 
-:root{
-    --st: #8719C4;
-    --nd: #641290;
-    --rd: #4d116d;
-    --bg-light: #b75ae9;
-}
 .btn {
     border-radius: 2em;
     transition: background-color 0s;
@@ -199,4 +203,36 @@ svg {
 }
 .btn-curso-ativo:hover {
     background-color: #4d116d !important;
+}
+
+.section-form-inscricao {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+#form-adocao {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+    padding: 0;
+}
+.form-section {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    transition: left 0.3s ease-in-out;
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+}
+.form-section.section-atual {
+    left: 0;
 }

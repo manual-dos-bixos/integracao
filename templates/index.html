@@ -89,7 +89,7 @@
             </div>
         </div>
     </section>
-    
+
     <section id="projeto-adocao" class="hidden">
         <div class="d-flex justify-content-center align-items-center py-5 px-3">
             <div class="col-12 col-md-10 col-lg-8 card bg-dark text-light p-3 rounded-5 m-auto">
@@ -97,10 +97,10 @@
                 <p>Consiste em associar cada calouro a um veterano de mesmo curso para apoio direto.</p>
                 <p>Uma ótima oportunidade para ter ajuda e criar novos laços. Participe!</p>
                 
-                <div class="text-center">
-                    <h4 class="m-2">Eu sou...</h4>
-                    <button class="btn btn-lg btn-primary px-4 m-1 mt-0" id="btn-calouro-inscricao">Calouro</button>
-                    <button class="btn btn-lg btn-primary px-4 m-1 mt-0" id="btn-veterano-inscricao">Veterano</button>
+                <div class="d-flex justify-content-center mt-5">
+                    <a class="btn btn-lg btn-primary" href="{{ url_for('form')}}">
+                        <i class="bi bi-person-fill-add me-2"></i>Fazer minha inscrição
+                    </a>
                 </div>
 
                 <div class="d-flex justify-content-start mt-5 link-index">
@@ -173,7 +173,7 @@
 {% endblock %}
 
 {% block scripts %}
-    <script src="../static/scripts/index.js"></script>
+    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
 
     {% if show_modal %}
         <script>

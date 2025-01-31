@@ -3,50 +3,80 @@
 {% block title %} Create a New Post {% endblock %}
 
 {% block content %}
-    <h1>Formulário de Cadastro</h1>
-    <form method="POST" class="col-xs-8 col-md-6 col-lg-4 p-3 text-light">
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-            {{ form.nome.label(class="my-3") }} {{ form.nome() }}
-            {% for error in form.nome.errors %}
-                <span style="color: red;">{{ error }}</span>
-            {% endfor %}
+    <section id="section-form-inscricao">
+        <div class="position-absolute text-light w-100 p-3 py-4">
+            <h1 class="text-center">Formulário de Cadastro</h1>
+            <span id="form-progress-bar"></span>
         </div>
-        <div class="form-group">
-            {{ form.sobrenome.label(class="my-3") }} {{ form.sobrenome() }}
-            {% for error in form.sobrenome.errors %}
-                <span style="color: red;">{{ error }}</span>
-            {% endfor %}
+
+        <form method="POST" class="col-xs-8 col-md-6 col-lg-4 p-0 text-light" id="form-adocao">
+            <div class="form-section section-atual text-center">
+                {{ form.hidden_tag() }}
+
+                <h4 class="m-2">Eu sou...</h4>
+                <button class="w-100 btn btn-lg btn-primary px-4 m-1 mt-0 d-flex flex-column align-items-center btn-inscricao" data-tipo="calouro">
+                    <h3 class="m-0 p-0">Calouro</h3>
+                    <small>Quero ser adotado!</small>
+                </button>
+                <button class="w-100 btn btn-lg btn-primary px-4 m-1 mt-0 d-flex flex-column align-items-center btn-inscricao" data-tipo="veterano">
+                    <h3 class="m-0 p-0">Veterano</h3>
+                    <small>Quero adotar!</small>
+                </button>
+            </div>
+
+            <div class="form-section form-group">
+                {{ form.nome.label(class="my-3") }} {{ form.nome() }}
+                {% for error in form.nome.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-section form-group">
+                {{ form.sobrenome.label(class="my-3") }} {{ form.sobrenome() }}
+                {% for error in form.sobrenome.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-section form-group">
+                {{ form.idade.label(class="my-3") }} {{ form.idade() }}
+                {% for error in form.idade.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-section form-group">
+                {{ form.curso() }}
+                {% for error in form.curso.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+                <div class="d-flex flex-column" id="curso-btns">
+                    <p>Qual é o seu curso?</p>
+                </div>
+            </div>
+            <div class="form-section form-group">
+                {{ form.whatsapp.label(class="my-3") }} {{ form.whatsapp() }}
+                {% for error in form.whatsapp.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-section form-group">
+                {{ form.semestre_atual.label(class="my-3") }} {{ form.semestre_atual() }}
+                {% for error in form.semestre_atual.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-section form-group">
+                <button class="btn btn-primary mx-auto my-4" type="submit">Enviar</button>
+            </div>
+        </form>
+
+        <div class="position-absolute d-flex justify-content-between w-100 p-3 py-4 bottom-0">
+            <button class="btn btn-primary text-center disabled" id="btn-prev">
+                <i class="bi bi-caret-left-fill me-2"></i>&nbsp;Anterior
+            </button>
+            <button class="btn btn-primary text-center" id="btn-next">
+                Próximo&nbsp;<i class="bi bi-caret-right-fill me-2"></i>
+            </button>
         </div>
-        <div class="form-group">
-            {{ form.idade.label(class="my-3") }} {{ form.idade() }}
-            {% for error in form.idade.errors %}
-                <span style="color: red;">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="form-group">
-            {{ form.curso() }}
-            {% for error in form.curso.errors %}
-                <span style="color: red;">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="d-flex flex-column" id="curso-btns">
-            <p>Qual é o seu curso?</p>
-        </div>
-        <div class="form-group">
-            {{ form.whatsapp.label(class="my-3") }} {{ form.whatsapp() }}
-            {% for error in form.whatsapp.errors %}
-                <span style="color: red;">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="form-group">
-            {{ form.semestre_atual.label(class="my-3") }} {{ form.semestre_atual() }}
-            {% for error in form.semestre_atual.errors %}
-                <span style="color: red;">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <button class="btn btn-primary mx-auto my-4" type="submit">Enviar</button>
-    </form>
+    </section>
 
     <div class="modal fade" id="modal-email-sem-cadastro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
