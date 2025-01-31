@@ -13,7 +13,7 @@
 }
 body {
     margin: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: #303030;
 }
 
@@ -178,4 +178,25 @@ svg {
     to {
         transform: rotate(360deg);
     }
+}
+
+.btn-curso {
+    color: white !important;
+    border-radius: 4px;
+    margin: 4px;
+    padding: 8px;
+    border: none;
+    text-align: start;
+    transition: all .1s;
+    background-color: #141414;
+}
+.btn-curso:active {
+    background-color: #4d116d !important;
+}
+
+.btn-curso-ativo {
+    background-color: #8719C4;
+}
+.btn-curso-ativo:hover {
+    background-color: #4d116d !important;
 }

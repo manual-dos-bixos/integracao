@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %} Create a New Post {% endblock %}
+
+{% block content %}
+    <h1>Formulário de Cadastro</h1>
+    <form method="POST" class="col-xs-8 col-md-6 col-lg-4 p-3 text-light">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.nome.label(class="my-3") }} {{ form.nome() }}
+            {% for error in form.nome.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.sobrenome.label(class="my-3") }} {{ form.sobrenome() }}
+            {% for error in form.sobrenome.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.idade.label(class="my-3") }} {{ form.idade() }}
+            {% for error in form.idade.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.curso() }}
+            {% for error in form.curso.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="d-flex flex-column" id="curso-btns">
+            <p>Qual é o seu curso?</p>
+        </div>
+        <div class="form-group">
+            {{ form.whatsapp.label(class="my-3") }} {{ form.whatsapp() }}
+            {% for error in form.whatsapp.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.semestre_atual.label(class="my-3") }} {{ form.semestre_atual() }}
+            {% for error in form.semestre_atual.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <button class="btn btn-primary mx-auto my-4" type="submit">Enviar</button>
+    </form>
+
+    <div class="modal fade" id="modal-email-sem-cadastro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark rounded-4">
+            <div class="modal-body bg-dark text-light rounded-4 p-3">
+                <div class="d-flex justify-content-center">
+                    <img src="../static/assets/img/sad-emoji.png" alt="Emoji triste" class="col-6 col-md-3 m-2">
+                </div>
+                <h4>Hmm... parece que você ainda não se inscreveu no projeto de adoção.</h4>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="button" class="btn btn-primary link-adocao">Fazer inscrição</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="../static/scripts/form.js"></script>
+
+    {% if alert %}
+        <script>
+            // Exibir o modal se show_modal for True
+            $(document).ready(function() {
+                $('#modal-email-sem-cadastro').modal('show');
+            });
+        </script>
+    {% endif %}
+{% endblock %}

@@ -1,7 +1,5 @@
 $(document).ready(function() {
-    if (window.scrollY >= window.innerHeight) {
-        $('body').css({'overflow': 'scroll'});
-    }
+    $('#index').show();
 });
 
 $(document).on('click', '#scroll-to-main', function() {

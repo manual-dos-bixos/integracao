@@ -171,3 +171,16 @@
     </div>
 
 {% endblock %}
+
+{% block scripts %}
+    <script src="../static/scripts/index.js"></script>
+
+    {% if show_modal %}
+        <script>
+            // Exibir o modal se show_modal for True
+            $(document).ready(function() {
+                $('#myModal').modal('show');
+            });
+        </script>
+    {% endif %}
+{% endblock %}
