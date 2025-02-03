@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $('#btn-next, #btn-prev').hide();
+    $('.step-icon').first().css({'background-color': '#641290', 'color': '#fff'})
 
     // TROCAR RADIO BUTTON POR BOTAO
     $('input.form-check').each(function() {
@@ -22,9 +23,7 @@ $(document).on('click', '.btn-curso', function(e) {
 });
 
 $(document).on('click', '#btn-prev, #btn-next', function(e) {
-    let tipoAluno = $('.btn-inscricao.selected-btn').data('tipo');
-    let numEtapas = tipoAluno == 'calouro' ? $('.form-section').length - 1 : $('.form-section').length;
-
+    let numEtapas = $('.form-section').length;
     let sectionAtual = $('.section-atual');
 
     if ($(this).prop('id') == 'btn-next') {
@@ -50,36 +49,22 @@ $(document).on('click', '#btn-prev, #btn-next', function(e) {
     $('.step-icon').slice(etapaAtual + 1).css({'background-color': '#fff', 'color': '#641290'})
 });
 
-$(document).on('click', '.btn-inscricao', function(e) {
+$(document).on('click', '.btn-tipo-aluno-inscricao', function(e) {
     e.preventDefault();
-    $('.btn-inscricao').removeClass('selected-btn');
+    $('.btn-tipo-aluno-inscricao').removeClass('selected-btn');
     $(this).addClass('selected-btn');
-
-    let tipoAluno = $(this).data('tipo');
-    let numEtapas = tipoAluno == 'calouro' ? $('.form-section').length - 1 : $('.form-section').length;
-
-    if ($('#form-progress-bar').css('opacity') == 1) {
-        $('#form-progress-bar .step-icon').animate({opacity: 0}, 100);
-        setTimeout(() => {
-            $('#form-progress-bar .step-icon').remove();
-            
-            for (let i = 0; i < numEtapas; i++) $('#form-progress-bar').append(`<span class="step-icon">${i + 1}</i>`);
-            $('#form-progress-bar .step-icon').css({'opacity': 0});
-            $('#form-progress-bar .step-icon').animate({opacity: 1}, 100);
-            $('.step-icon').first().css({'background-color': '#641290', 'color': '#fff'});
-        }, 100);
-    } else {
-        for (let i = 0; i < numEtapas; i++) $('#form-progress-bar').append(`<span class="step-icon">${i + 1}</i>`);
-        $('#form-progress-bar .step-icon').css({'opacity': 0});
-        $('#form-progress-bar').animate({opacity: 1}, 100);
-        $('#form-progress-bar .step-icon').animate({opacity: 1}, 100);
-        $('.step-icon').first().css({'background-color': '#641290', 'color': '#fff'})
-    }
 
     if ($('#btn-next').is(':hidden')) setTimeout(() => $('#btn-next').click(), 600);
     $('#btn-next, #btn-prev').prop('hidden', false);
     $('#btn-next, #btn-prev').fadeIn(100);
 
+    if ($(this).data('tipo') == 'calouro') {
+        $('#semestre_atual').parent().hide();
+        $('#semestre_atual').val('1');
+    } else {
+        $('#semestre_atual').parent().show();
+        $('#semestre_atual').val('');
+    }
 });
 
 // FORMATAR TELEFONE
@@ -90,15 +75,33 @@ $(document).on('input', '.telefone-input', function() {
     if (value.length <= 2) {
         $(this).val(`(${value}`);
     } else if (value.length <= 6) {
-        $(this).val(`(${value.slice(0, 2)}) ${value.slice(2, 3)} ${value.slice(3, 7)}`);
+        $(this).val(`(${value.slice(0, 2)}) ${value.slice(2, 6)}`);
+    } else if (value.length <= 10) {
+        $(this).val(`(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6, 12)}`);
     } else {
         $(this).val(`(${value.slice(0, 2)}) ${value.slice(2, 3)} ${value.slice(3, 7)}-${value.slice(7, 11)}`);
     }
 });
 
 // Permite apagar os caracteres nao numericos
-$(document).on('keydown', '.telefone-input', function() {
+$(document).on('keydown', '.telefone-input', function(e) {
     var value = $(this).val().replace(/\D/g, '');
 
-    $(this).val(value);
+    if (e.keyCode === 8) $(this).val(value);
+});
+
+$(document).on('click', '.interesse', function(e) {
+    $(this).toggleClass('interesse-selecionado');
+});
+
+$(document).on('keydown', '#novo-interesse', function(e) {
+    if (e.key === 'Enter') {        
+        $('#lista-temas-novos').append(`<span class="interesse-adicionado">${$(this).val()}<i class="bi bi-x-lg ms-2"></i></span>`);
+        $(this).val('');
+        $(this).focus();
+    }
+});
+
+$(document).on('click', '.interesse-adicionado .bi-x-lg', function(e) {
+    $(this).parent().remove();
 });

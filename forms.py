@@ -1,13 +1,13 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, RadioField
-from wtforms.validators import DataRequired, Length, Regexp
+from wtforms import StringField, IntegerField, RadioField, TextAreaField
+from wtforms.validators import DataRequired, Length, NumberRange
 
 class FormularioCadastro(FlaskForm):
     nome = StringField(
         'Nome',
         validators = [DataRequired(), Length(min=3, max=100)],
         render_kw = {
-            "class": "form-control"
+            "class": "btn btn-dark form-control"
         }
     )
 
@@ -15,7 +15,7 @@ class FormularioCadastro(FlaskForm):
         'Sobrenome',
         validators = [DataRequired(), Length(min=3, max=100)],
         render_kw = {
-            "class": "form-control"
+            "class": "btn btn-dark form-control"
         }
     )
 
@@ -23,7 +23,27 @@ class FormularioCadastro(FlaskForm):
         'Idade',
         validators = [DataRequired()],
         render_kw = {
-            "class": "form-control"
+            "class": "btn btn-dark form-control text-center",
+            "inputmode": "numeric"
+        }
+    )
+    
+    whatsapp = StringField(
+        'WhatsApp',
+        validators = [DataRequired()],
+        render_kw = {
+            "class": "btn btn-dark form-control text-center telefone-input",
+            "inputmode": "numeric",
+            "placeholder": "(xx) x xxxx-xxxx"
+        }
+    )
+
+    semestre_atual = IntegerField(
+        'Semestre Atual',
+        validators = [DataRequired(), NumberRange(min=1, max=10)],
+        render_kw = {
+            "class": "btn btn-dark form-control text-center",
+            "inputmode": "numeric"
         }
     )
 
@@ -41,23 +61,16 @@ class FormularioCadastro(FlaskForm):
         ],
         validators = [DataRequired(), Length(min=3, max=100)],
         render_kw = {
-            "class": "form-check"
+            "class": "form-check d-none"
         }
     )
 
-    whatsapp = StringField(
-        'WhatsApp',
-        validators = [DataRequired()],
+    sobre = TextAreaField(
+        'Nos conte um pouco sobre você!',
+        validators = [DataRequired(), Length(min=50)],
         render_kw = {
-            "class": "form-control telefone-input",
-            "placeholder": "(xx) x xxxx-xxxx"
-        }
-    )
-
-    semestre_atual = IntegerField(
-        'Semestre Atual',
-        validators = [DataRequired()],
-        render_kw = {
-            "class": "form-control"
+            "class": "btn btn-dark form-control",
+            "placeholder": "Esta informação é para ajudar o seu calouro/veterano a te conhecer um pouco melhor. Conte um pouco sobre suas experiências pessoais e acadêmicas, hobbies e interessees.",
+            "rows": 8
         }
     )

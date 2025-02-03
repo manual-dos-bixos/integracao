@@ -194,20 +194,22 @@ svg {
     transition: all .1s;
     background-color: #141414;
 }
-.btn-curso:active {
-    background-color: #4d116d !important;
+.btn-curso:hover {
+    background-color: #4d116d;
 }
-
+.btn-curso:active {
+    background-color: #8719C4 !important;
+}
 .btn-curso-ativo {
-    background-color: #8719C4;
+    background-color: #641290;
 }
 .btn-curso-ativo:hover {
     background-color: #4d116d !important;
 }
 
-.section-form-inscricao {
-    font-family: Arial, sans-serif;
+#section-form-inscricao {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -221,24 +223,38 @@ svg {
     position: relative;
     padding: 0;
 }
+#form-header {
+    width: 100%;
+    height: 10em;
+    padding: 2em;
+}
+#form-footer {
+    height: 7em;
+}
 .form-section {
     position: absolute;
     top: 0;
     left: 100%;
     width: 100%;
     transition: left 0.3s ease-in-out;
-    padding: 3em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100vh;
+    padding: 2em;
+    height: calc(100vh - 17em);
+    overflow: scroll;
 }
 .form-section.section-atual {
     left: 0;
 }
 
+.btn-dark.form-control {
+    color: white;
+    background-color: #4d5154;
+    text-align: start;
+    padding: .5em 1em;
+    border-radius: 8px;
+}
+
 #form-progress-bar {
-    margin-top: 2em;
+    margin-top: 1em;
     height: 6px;
     border-radius: 1em;
     background-color: #fff;
@@ -255,16 +271,72 @@ svg {
     transition: all .2s;
 }
 #form-progress-bar .step-icon {
-    height: 1.8em;
-    width: 1.8em;
+    height: 1.6em;
+    width: 1.6em;
     border-radius: 2em;
     position: relative;
-    bottom: .7em;
-    font-size: 1.4em;
+    bottom: .5em;
+    font-size: 1em;
     color: #641290;
     background-color: #fff;
     display: flex;
-    align-items: center;
     justify-content: center;
     transition: all .2s;
+}
+
+#sobre::placeholder {
+    color: white;
+    opacity: .6;
+    font-weight: 100;
+}
+
+.form-section::-webkit-scrollbar {
+    background-color: #00000000;
+}
+.form-section::-webkit-scrollbar-button {
+    background-color: #00000000;
+}
+.form-section::-webkit-scrollbar-thumb {
+    background-color: #4d5154;
+}
+.form-section::-webkit-scrollbar-track {
+    background-color: #00000000;
+}
+.form-section::-webkit-scrollbar-track-piece {
+    background-color: #00000000;
+}
+.form-section::-webkit-scrollbar-corner {
+    background-color: #00000000;
+}
+.form-section::-webkit-resizer {
+    background-color: #00000000;
+}
+
+.interesse {
+    border: 1px solid #cccccc59;
+    border-radius: .5em;
+    margin: 4px;
+    padding: 1em;
+    transition: background-color .2s;
+}
+.interesse p {
+    margin: 0;
+}
+.interesse-selecionado {
+    background-color: #7918ae;
+}
+#lista-temas-novos {
+    display: flex;
+    flex-wrap: wrap;
+    margin-block: 2em;
+    width: 100%;
+}
+.interesse-adicionado {
+    background-color: #641290;
+    color: #fff;
+    padding: .5em 1em;
+    border-radius: 8px;
+    margin: 4px;
+    display: flex;
+    align-items: center;
 }

@@ -12,6 +12,8 @@ def index():
 
 @app.route('/form', methods=['GET', 'POST'])
 def form():
+    conn = get_db_conn()
+    interesses = conn.execute('SELECT * FROM interesse;').fetchall()
     form = FormularioCadastro()
     if form.validate_on_submit():
         # Aqui você pode processar os dados do formulário
@@ -23,7 +25,7 @@ def form():
         semestre_atual = form.semestre_atual.data
         # Fazer algo com os dados
         return 'Cadastro realizado com sucesso!'
-    return render_template('form.html', form=form)
+    return render_template('form.html', form=form, interesses=interesses)
 
 def get_db_conn():
     conn = sqlite3.connect('database.db')
