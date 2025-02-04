@@ -217,9 +217,9 @@ svg {
     padding: 0;
 }
 #form-adocao {
-    height: 100vh;
-    width: 100vw;
+    height: calc(100vh - 17em);
     overflow-x: hidden;
+    width: 100vw;
     position: relative;
     padding: 0;
 }
@@ -339,4 +339,20 @@ svg {
     margin: 4px;
     display: flex;
     align-items: center;
+}
+
+#warning-campos-incompletos {
+    width: 100vw;
+    position: absolute;
+    top: -30vh;
+    max-height: 30vh;
+    padding-top: 2em;
+    transition: all .5s cubic-bezier(1,0,0,1);
+    background: #00000000;
+    background: linear-gradient(0deg, #00000000 0%, #000 100%);
+}
+
+#conclusao-incricao {
+    height: 100vh;
+    width: 100vw;
 }

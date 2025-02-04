@@ -13,19 +13,35 @@ def index():
 @app.route('/form', methods=['GET', 'POST'])
 def form():
     conn = get_db_conn()
+    cursor = conn.cursor()
     interesses = conn.execute('SELECT * FROM interesse;').fetchall()
+    inscricao_concluida = False
     form = FormularioCadastro()
+
     if form.validate_on_submit():
-        # Aqui você pode processar os dados do formulário
         nome = form.nome.data
         sobrenome = form.sobrenome.data
         idade = form.idade.data
-        curso = form.curso.data
         whatsapp = form.whatsapp.data
         semestre_atual = form.semestre_atual.data
-        # Fazer algo com os dados
-        return 'Cadastro realizado com sucesso!'
-    return render_template('form.html', form=form, interesses=interesses)
+        curso = form.curso.data
+        sobre = form.sobre.data
+        
+        cursor.execute(
+            'INSERT INTO aluno (nome, sobrenome, idade, whatsapp, semestre, curso_id, sobre) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            (nome, sobrenome, idade, whatsapp, semestre_atual, curso, sobre)
+        )
+        conn.commit()
+        conn.close()
+
+        inscricao_concluida = True
+    return render_template('inscricao.html', form=form, interesses=interesses, inscricao_concluida=inscricao_concluida)
+
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    conn = get_db_conn()
+    alunos = conn.execute('SELECT * FROM aluno;').fetchall()
+    return render_template('admin.html', alunos=alunos)
 
 def get_db_conn():
     conn = sqlite3.connect('database.db')

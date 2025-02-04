@@ -7,9 +7,9 @@ CREATE TABLE aluno (
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     nome TEXT NOT NULL,
     sobrenome TEXT NOT NULL,
-    email TEXT NOT NULL,
     whatsapp VARCHAR(20) NOT NULL,
     semestre SMALLINT,
+    idade INT NOT NULL,
     sobre TEXT,
     curso_id INTEGER NOT NULL,
     FOREIGN KEY (curso_id) REFERENCES curso(id)
@@ -38,9 +38,9 @@ INSERT INTO curso (sigla, nome, turno) VALUES
 ('PQ', 'Processos Químicos', 'Manhã'),
 ('PQ', 'Processos Químicos', 'Noite');
 
-INSERT INTO aluno (nome, sobrenome, email, whatsapp, semestre, sobre, curso_id) VALUES
-('Gabriel', 'Munhóz', 'gbljsmunhoz@gmail.com', '19995732668', '6', '', 1),
-('Leticia', 'Gama', 'letcgam@gmail.com', '19995030350', '1', 'lorem ipsul dolor sit', 5);
+INSERT INTO aluno (nome, sobrenome, idade, whatsapp, semestre, sobre, curso_id) VALUES
+('Gabriel', 'Munhóz', 26, '19995732668', '6', '', 1),
+('Leticia', 'Gama', 22, '19995030350', '1', 'lorem ipsul dolor sit', 5);
 
 INSERT INTO interesse (nome, descricao) VALUES
 ('Ciências humanas', 'história, filosofia, arqueologia'),

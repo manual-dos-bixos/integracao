@@ -1,25 +1,16 @@
 $(document).ready(function() {
     $('#btn-next, #btn-prev').hide();
     $('.step-icon').first().css({'background-color': '#641290', 'color': '#fff'})
-
-    // TROCAR RADIO BUTTON POR BOTAO
-    $('input.form-check').each(function() {
-        let id = $(this).prop('id');
-
-        $('#curso-btns').append(`<button class="btn btn-light btn-curso" id="btn-${id}">${$(`label[for="${id}"]`).text()}</button>`);
-        $(this).parent().hide();
-    });
 });
 
 $(document).on('click', '.btn-curso', function(e) {
     e.preventDefault();
-    let id = $(this).prop('id').replace('btn-', '');
-    let radio = $('#' + id);
+    let cursoId = $(this).data('codigo');
 
     $('.btn-curso').removeClass('btn-curso-ativo');
     $(this).addClass('btn-curso-ativo');
 
-    radio.prop('checked', true);
+    $('#curso').val(cursoId);
 });
 
 $(document).on('click', '#btn-prev, #btn-next', function(e) {
@@ -27,13 +18,21 @@ $(document).on('click', '#btn-prev, #btn-next', function(e) {
     let sectionAtual = $('.section-atual');
 
     if ($(this).prop('id') == 'btn-next') {
-        let nextSection = sectionAtual.next();
-
-        sectionAtual.removeClass('section-atual').css('left', '-100%');
-        nextSection.addClass('section-atual').css('left', '0');
-
-        $('#btn-prev').removeClass('disabled');
-        if ($('.form-section.section-atual').index() == numEtapas - 1) $(this).addClass('disabled');
+        let inputs = $('.section-atual').find('input, textarea');
+        let etapaCompleta = validateForm(inputs);
+    
+        if (etapaCompleta) {
+            let nextSection = sectionAtual.next();
+            
+            sectionAtual.removeClass('section-atual').css('left', '-100%');
+            nextSection.addClass('section-atual').css('left', '0');
+            
+            $('#btn-prev').removeClass('disabled');
+            if ($('.form-section.section-atual').index() == numEtapas - 1) $(this).addClass('disabled');
+        } else {
+            $('#warning-campos-incompletos').css({'top': '0'});
+            setTimeout(() => $('#warning-campos-incompletos').css({'top': '-30vh'}), 2000);
+        }
     } else {
         let prevSection = sectionAtual.prev();
         sectionAtual.removeClass('section-atual').css('left', '100%');
@@ -47,6 +46,11 @@ $(document).on('click', '#btn-prev, #btn-next', function(e) {
     $('#form-progress-bar .progress').css({'width': (etapaAtual / (numEtapas - 1) * $('#form-progress-bar').width()) + 'px'});
     $('.step-icon').slice(0, etapaAtual + 1).css({'background-color': '#641290', 'color': '#fff'})
     $('.step-icon').slice(etapaAtual + 1).css({'background-color': '#fff', 'color': '#641290'})
+});
+
+$(document).on('keydown change', '.is-invalid', function(e) {
+    $(this).removeClass('is-invalid');
+    $(this).parent().find('.error-span').remove();
 });
 
 $(document).on('click', '.btn-tipo-aluno-inscricao', function(e) {
@@ -68,7 +72,6 @@ $(document).on('click', '.btn-tipo-aluno-inscricao', function(e) {
 });
 
 // FORMATAR TELEFONE
-// Aplica a formatação conforme a quantidade de caracteres
 $(document).on('input', '.telefone-input', function() {
     var value = $(this).val().replace(/\D/g, '');
         
@@ -82,7 +85,6 @@ $(document).on('input', '.telefone-input', function() {
         $(this).val(`(${value.slice(0, 2)}) ${value.slice(2, 3)} ${value.slice(3, 7)}-${value.slice(7, 11)}`);
     }
 });
-
 // Permite apagar os caracteres nao numericos
 $(document).on('keydown', '.telefone-input', function(e) {
     var value = $(this).val().replace(/\D/g, '');
@@ -105,3 +107,55 @@ $(document).on('keydown', '#novo-interesse', function(e) {
 $(document).on('click', '.interesse-adicionado .bi-x-lg', function(e) {
     $(this).parent().remove();
 });
+
+$(document).on('click', '.close-warning', function() {
+    $(this).closest('.warning').css({'top': '-30vh'});
+});
+
+$(document).on('click', '#btn-enviar-form', function(e) {
+    e.preventDefault();
+
+    let inputs = $('.section-atual').find('input, textarea');
+    let etapaCompleta = validateForm(inputs);
+
+    if (etapaCompleta) {
+        $('#form-adocao').submit();
+    } else {
+        $('#warning-campos-incompletos').css({'top': '0'});
+        setTimeout(() => $('#warning-campos-incompletos').css({'top': '-30vh'}), 2000);
+    }
+});
+
+function validateForm(inputs) {
+    let valido = true;
+    
+    inputs.not('#csrf_token').each(function() {
+        let input = $(this);
+        input.parent().find('.error-span').remove();
+        
+        let value = input.val().trim();
+        let maxlen = input.attr('maxlength');
+        let minlen = input.attr('minlength');
+        let max = parseFloat(input.attr('max'));
+        let min = parseFloat(input.attr('min'));
+        
+        let empty = input.prop('required') == true && value == '';
+        let tooShort = !isNaN(parseFloat(minlen)) && minlen > 0 && value.length < minlen;
+        let tooLong = !isNaN(parseFloat(maxlen)) && maxlen > 0 && value.length > maxlen;
+        let tooBig = !isNaN(parseFloat(max)) && max > 0 && parseFloat(value) > max;
+        let tooSmall = !isNaN(parseFloat(min)) && min > 0 && parseFloat(value) < min;
+
+        if (empty || tooLong || tooShort || tooBig || tooSmall) {
+            input.addClass('is-invalid');
+            valido = false;
+        }
+
+        if (tooLong) input.parent().append(`<small class="text-danger error-span">Máximo de ${maxlen} caracteres.</small>`);
+        if (tooShort) input.parent().append(`<small class="text-danger error-span">Mínimo de ${minlen} caracteres.</small>`);
+        if (tooBig) input.parent().append(`<small class="text-danger error-span">Valor maior que ${max}.</small>`);
+        if (tooSmall) input.parent().append(`<small class="text-danger error-span">Valor menor que ${min}.</small>`);
+    });
+    
+    console.log(valido);
+    return valido;
+}
