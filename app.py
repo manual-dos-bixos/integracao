@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, render_template, request, url_for, flash, redirect
+from flask import Flask, render_template, request, url_for, flash, redirect, make_response
 from werkzeug.exceptions import abort
 from forms import FormularioCadastro
 
@@ -35,7 +35,9 @@ def form():
         conn.close()
 
         inscricao_concluida = True
-    return render_template('inscricao.html', form=form, interesses=interesses, inscricao_concluida=inscricao_concluida)
+    response = make_response(render_template('inscricao.html', form=form, interesses=interesses, inscricao_concluida=inscricao_concluida))
+    response.headers['Cache-Control'] = 'public, max-age=3600'
+    return response
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():

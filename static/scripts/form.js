@@ -1,6 +1,10 @@
 $(document).ready(function() {
     $('#btn-next, #btn-prev').hide();
-    $('.step-icon').first().css({'background-color': '#641290', 'color': '#fff'})
+    $('.step-icon').first().css({'background-color': '#641290', 'color': '#fff'});
+});
+
+$(document).on('keydown', 'input', function(e) {
+    if (e.key == 'Tab' || e.key == 'Enter') e.preventDefault();
 });
 
 $(document).on('click', '.btn-curso', function(e) {
@@ -156,6 +160,5 @@ function validateForm(inputs) {
         if (tooSmall) input.parent().append(`<small class="text-danger error-span">Valor menor que ${min}.</small>`);
     });
     
-    console.log(valido);
     return valido;
 }

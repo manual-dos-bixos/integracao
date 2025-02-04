@@ -41,7 +41,7 @@ class FormularioCadastro(FlaskForm):
             'inputmode': 'numeric',
             'required': 'true',
             'placeholder': '(xx) x xxxx-xxxx',
-            'minlength': 10
+            'minlength': 12
         }
     )
 
