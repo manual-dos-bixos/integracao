@@ -312,17 +312,17 @@ svg {
     background-color: #00000000;
 }
 
-.interesse {
+.tema {
     border: 1px solid #cccccc59;
     border-radius: .5em;
     margin: 4px;
     padding: 1em;
     transition: background-color .2s;
 }
-.interesse p {
+.tema p {
     margin: 0;
 }
-.interesse-selecionado {
+.tema-selecionado {
     background-color: #7918ae;
 }
 #lista-temas-novos {
@@ -331,7 +331,7 @@ svg {
     margin-block: 2em;
     width: 100%;
 }
-.interesse-adicionado {
+.tema-adicionado {
     background-color: #641290;
     color: #fff;
     padding: .5em 1em;

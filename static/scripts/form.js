@@ -96,19 +96,19 @@ $(document).on('keydown', '.telefone-input', function(e) {
     if (e.keyCode === 8) $(this).val(value);
 });
 
-$(document).on('click', '.interesse', function(e) {
-    $(this).toggleClass('interesse-selecionado');
+$(document).on('click', '.tema', function(e) {
+    $(this).toggleClass('tema-selecionado');
 });
 
-$(document).on('keydown', '#novo-interesse', function(e) {
+$(document).on('keydown', '#novo-tema', function(e) {
     if (e.key === 'Enter') {        
-        $('#lista-temas-novos').append(`<span class="interesse-adicionado">${$(this).val()}<i class="bi bi-x-lg ms-2"></i></span>`);
+        $('#lista-temas-novos').append(`<span class="tema-adicionado">${$(this).val()}<i class="bi bi-x-lg ms-2"></i></span>`);
         $(this).val('');
         $(this).focus();
     }
 });
 
-$(document).on('click', '.interesse-adicionado .bi-x-lg', function(e) {
+$(document).on('click', '.tema-adicionado .bi-x-lg', function(e) {
     $(this).parent().remove();
 });
 

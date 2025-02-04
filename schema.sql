@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS aluno;
 DROP TABLE IF EXISTS curso;
-DROP TABLE IF EXISTS interesse;
+DROP TABLE IF EXISTS tema;
 
 CREATE TABLE aluno (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,10 +22,18 @@ CREATE TABLE curso (
     turno VARCHAR(10) NOT NULL
 );
 
-CREATE TABLE interesse (
+CREATE TABLE tema (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome VARCHAR(255) NOT NULL,
     descricao VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE aluno_tema (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    aluno_id INTEGER NOT NULL,
+    tema_id INTEGER NOT NULL,
+    FOREIGN KEY (aluno_id) REFERENCES aluno(id)
+    FOREIGN KEY (tema_id) REFERENCES tema(id)
 );
 
 INSERT INTO curso (sigla, nome, turno) VALUES
@@ -42,7 +50,7 @@ INSERT INTO aluno (nome, sobrenome, idade, whatsapp, semestre, sobre, curso_id) 
 ('Gabriel', 'Munhóz', 26, '19995732668', '6', '', 1),
 ('Leticia', 'Gama', 22, '19995030350', '1', 'lorem ipsul dolor sit', 5);
 
-INSERT INTO interesse (nome, descricao) VALUES
+INSERT INTO tema (nome, descricao) VALUES
 ('Ciências humanas', 'história, filosofia, arqueologia'),
 ('Espiritualidade e religiões', 'meditação, esoterismo, religiões do mundo'),
 ('Ciências sociais', 'psicologia, sociologia, antropologia'),

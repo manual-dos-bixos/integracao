@@ -112,17 +112,17 @@
                     </div>
                 </div>
                 <div class="form-section">
-                    <p>Selecione abaixo temas que são de seu interesse.</p>
-                    {% for interesse in interesses %}
-                        <div class="interesse" data-codigo="{{ interesse.id }}">
-                            <strong>{{ interesse.nome }}</strong>
-                            <p><small>{{ interesse.descricao }}</small></p>
+                    <p>Selecione abaixo temas que são de seu tema.</p>
+                    {% for tema in temas %}
+                        <div class="tema" data-codigo="{{ tema.id }}">
+                            <strong>{{ tema.nome }}</strong>
+                            <p><small>{{ tema.descricao }}</small></p>
                         </div>
                     {% endfor %}
                     <div class="form-group mt-4">
                         <p class="my-1">Pensou em algo que não está listado? <strong>Inclua abaixo!</strong></p>
                         <small class="mb-4 text-secondary">Aperte enter para incluir temas.</small>
-                        <input type="text" class="form-control btn-dark" id="novo-interesse">
+                        <input type="text" class="form-control btn-dark" id="novo-tema">
                     </div>
                     <div id="lista-temas-novos"></div>
                 </div>

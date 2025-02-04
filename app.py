@@ -14,7 +14,7 @@ def index():
 def form():
     conn = get_db_conn()
     cursor = conn.cursor()
-    interesses = conn.execute('SELECT * FROM interesse;').fetchall()
+    temas = conn.execute('SELECT * FROM tema;').fetchall()
     inscricao_concluida = False
     form = FormularioCadastro()
 
@@ -35,7 +35,8 @@ def form():
         conn.close()
 
         inscricao_concluida = True
-    response = make_response(render_template('inscricao.html', form=form, interesses=interesses, inscricao_concluida=inscricao_concluida))
+
+    response = make_response(render_template('inscricao.html', form=form, temas=temas, inscricao_concluida=inscricao_concluida))
     response.headers['Cache-Control'] = 'public, max-age=3600'
     return response
 
@@ -49,6 +50,12 @@ def get_db_conn():
     conn = sqlite3.connect('database.db')
     conn.row_factory = sqlite3.Row
     return conn
+
+@app.after_request
+def add_cache_control(response):
+    response.cache_control.max_age = 3600
+    response.cache_control.public = True
+    return response
 
 # # def index():
 #     conn = get_db_conn()

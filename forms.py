@@ -79,7 +79,7 @@ class FormularioCadastro(FlaskForm):
         validators = [DataRequired()],
         render_kw = {
             'class': 'btn btn-dark form-control',
-            'placeholder': 'Esta informação é para ajudar o seu calouro/veterano a te conhecer um pouco melhor. Conte um pouco sobre suas experiências pessoais e acadêmicas, hobbies e interessees.',
+            'placeholder': 'Esta informação é para ajudar o seu calouro/veterano a te conhecer um pouco melhor. Conte um pouco sobre suas experiências pessoais e acadêmicas, hobbies e temaes.',
             'rows': 8,
             'required': 'true'
         }
