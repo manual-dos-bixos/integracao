@@ -1,7 +1,7 @@
+import os
 from flask import Flask, render_template, request, url_for, flash, redirect, make_response, jsonify, Blueprint
-from forms import FormularioCadastro
+from app.forms import FormularioCadastro
 from app.models import db, Aluno, Curso, Tema
-import app
 
 main = Blueprint('main', __name__)
 
@@ -38,8 +38,12 @@ def form():
 
 @main.route('/admin', methods=['GET', 'POST'])
 def admin():
-    alunos = Aluno.query.all()
-    return render_template('admin.html', alunos=alunos)
+    pw = os.environ.get('admin_pw')
+    if pw != None:
+        alunos = Aluno.query.all()
+        return render_template('admin.html', alunos=alunos)
+    else:
+        return redirect('/')
 
 
 # Endpoint para retornar todos os alunos
