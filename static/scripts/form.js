@@ -98,6 +98,7 @@ $(document).on('keydown', '.telefone-input', function(e) {
 
 $(document).on('click', '.tema', function(e) {
     $(this).toggleClass('tema-selecionado');
+    $(this).find('input[type="checkbox"]').attr('checked', $(this).hasClass('tema-selecionado'));
 });
 
 $(document).on('keydown', '#novo-tema', function(e) {

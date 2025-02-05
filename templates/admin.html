@@ -6,6 +6,7 @@
 
     <table>
         <thead>
+            <th class="p-1 px-2 border text-light">id</th>
             <th class="p-1 px-2 border text-light">nome</th>
             <th class="p-1 px-2 border text-light">sobrenome</th>
             <th class="p-1 px-2 border text-light">idade</th>
@@ -17,6 +18,7 @@
         <tbody>
             {% for aluno in alunos %}
                 <tr>
+                    <td class="p-1 px-2 border text-light">{{ aluno.id }}</td>
                     <td class="p-1 px-2 border text-light">{{ aluno.nome }}</td>
                     <td class="p-1 px-2 border text-light">{{ aluno.sobrenome }}</td>
                     <td class="p-1 px-2 border text-light">{{ aluno.idade }}</td>

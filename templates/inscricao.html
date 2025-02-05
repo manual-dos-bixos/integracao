@@ -114,9 +114,10 @@
                 <div class="form-section">
                     <p>Selecione abaixo temas que são de seu tema.</p>
                     {% for tema in temas %}
-                        <div class="tema" data-codigo="{{ tema.id }}">
+                        <div class="tema">
                             <strong>{{ tema.nome }}</strong>
                             <p><small>{{ tema.descricao }}</small></p>
+                            <input type="checkbox" name="tema" value="{{ tema.id }}" hidden>
                         </div>
                     {% endfor %}
                     <div class="form-group mt-4">
