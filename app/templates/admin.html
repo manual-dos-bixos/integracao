@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} Welcome to FlaskBlog {% endblock %}
+
+{% block content %}
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Idade</th>
+            <th>Whatsapp</th>
+            <th>Semestre</th>
+            <th>Sobre</th>
+            <th>Curso</th>
+        </thead>
+        <tbody>
+            {% for aluno in alunos %}
+                <tr>
+                    <td>{{ aluno.id }}</td>
+                    <td>{{ aluno.nome }}</td>
+                    <td>{{ aluno.sobrenome }}</td>
+                    <td>{{ aluno.idade }}</td>
+                    <td>{{ aluno.whatsapp }}</td>
+                    <td>{{ aluno.semestre }}</td>
+                    <td>{{ aluno.sobre }}</td>
+                    <td>{{ aluno.curso.sigla }} <small>({{ aluno.curso.turno }})</small></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
