@@ -43,6 +43,12 @@ def admin():
     alunos = conn.execute('SELECT * FROM aluno;').fetchall()
     return render_template('admin.html', alunos=alunos)
 
+@app.route('/manual', methods=['GET', 'POST'])
+def manual():
+    conn = get_db_conn()
+    linhas = conn.execute('SELECT * FROM onibus;').fetchall()
+    return render_template('manual-dos-bixos.html', linhas=linhas)
+
 def get_db_conn():
     conn = sqlite3.connect('database.db')
     conn.row_factory = sqlite3.Row

@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS aluno;
 DROP TABLE IF EXISTS curso;
 DROP TABLE IF EXISTS interesse;
+DROP TABLE IF EXISTS onibus;
 
 CREATE TABLE aluno (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -26,6 +27,13 @@ CREATE TABLE interesse (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome VARCHAR(255) NOT NULL,
     descricao VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE onibus (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    numero_linha VARCHAR(4) NOT NULL UNIQUE,
+    sentido_1 VARCHAR(255) NOT NULL,
+    sentido_2 VARCHAR(255) NOT NULL
 );
 
 INSERT INTO curso (sigla, nome, turno) VALUES
@@ -70,3 +78,16 @@ INSERT INTO interesse (nome, descricao) VALUES
 ('Educação e aprendizado', 'idiomas, linguística, neurociência do aprendizado, desenvolvimento pessoal'),
 ('Vinhos e bebidas artesanais', 'cervejas artesanais, destilados, cafés especiais'),
 ('Voluntariado e ativismo', 'direitos humanos, causas ambientais, ajuda humanitária');
+
+INSERT INTO onibus (numero_linha, sentido_1, sentido_2) VALUES
+('310', 'Corredor Central (Centro)', 'Vl. Olímpia'),
+('311', 'Terminal Mercado 1 (Mercadão)', 'Jd. Santa Mônica'),
+('312', 'Terminal Mercado 1 (Mercadão)', 'Vl. Esperança'),
+('313', 'Corredor Central (Centro)', 'CDHU - Amarais'),
+('315', 'Aeroporto Amarais', 'Jd. San Martin'),
+('316', 'Corredor Central (Centro)', 'Jd. San Martin'),
+('317', 'Jd. São Marcos', 'Jd. São José'),
+('318', 'Corredor Central (Centro)', 'Jd. Mirassol'),
+('381', 'Shop. D. Pedro', 'Shop. Iguatemi'),
+('661', 'para Campinas - Terminal Magalhães Teixeira', 'para Paulínia - Conjunto Habitacional Tereza Z. Vedovelo'),
+('662', 'para Campinas - Terminal Magalhães Teixeira', 'para Sumaré - Jd. São Gerônimo');
