@@ -6,26 +6,26 @@
 
     <table class="table table-dark table-striped">
         <thead>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>Idade</th>
-            <th>Whatsapp</th>
-            <th>Semestre</th>
-            <th>Sobre</th>
-            <th>Curso</th>
+            <th class="id">ID</th>
+            <th class="nome">Nome</th>
+            <th class="sobrenome">Sobrenome</th>
+            <th class="idade">Idade</th>
+            <th class="whatsapp">Whatsapp</th>
+            <th class="semestre">Semestre</th>
+            <th class="sobre">Sobre</th>
+            <th class="curso">Curso</th>
         </thead>
         <tbody>
             {% for aluno in alunos %}
                 <tr>
-                    <td>{{ aluno.id }}</td>
-                    <td>{{ aluno.nome }}</td>
-                    <td>{{ aluno.sobrenome }}</td>
-                    <td>{{ aluno.idade }}</td>
-                    <td>{{ aluno.whatsapp }}</td>
-                    <td>{{ aluno.semestre }}</td>
-                    <td>{{ aluno.sobre }}</td>
-                    <td>{{ aluno.curso.sigla }} <small>({{ aluno.curso.turno }})</small></td>
+                    <td class="id">{{ aluno.id }}</td>
+                    <td class="nome">{{ aluno.nome }}</td>
+                    <td class="sobrenome">{{ aluno.sobrenome }}</td>
+                    <td class="idade">{{ aluno.idade }}</td>
+                    <td class="whatsapp">{{ aluno.whatsapp }}</td>
+                    <td class="semestre">{{ aluno.semestre }}</td>
+                    <td class="sobre">{{ aluno.sobre }}</td>
+                    <td class="curso">{{ aluno.curso.sigla }} <small>({{ aluno.curso.turno }})</small></td>
                 </tr>
             {% endfor %}
         </tbody>
