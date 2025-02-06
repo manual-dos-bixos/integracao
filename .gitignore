@@ -1,0 +1,3 @@
+# added IDE specific directory to .gitignore
+
+/.idea/
